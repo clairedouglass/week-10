@@ -1,0 +1,99 @@
+# Final Project Proposal
+
+For my final project, I would like to create a web application that visualizes real estate values
+around New York City subway lines. Interactivity built into the application will allow for the user
+to select specific subway lines - or even subway stops and see the median rent in the neighborhood, likely
+based on the surrounding census tracts.
+
+## Problem / Question
+
+The application seeks to highlight the relationship between real estate values and transit stops
+in New York City. Interactivity within the application will allow users to visually explore data on their
+own and understand neighborhood real estate values on a line-by-line or stop-by-stop basis. Ideally the application
+will bring to light some surprising relationships between properties and transit proximity, and will highlight
+both the most and least affordable neighborhoods to live in New York City.
+
+## The data
+
+1. New York City Subway lines: currently available in GEOSJON format on the NYC Open Data portal.
+2. New York City Subway stops: currently available in GEOJSON format on the NYC Open Data portal.
+3. 2015 ACS Data: I can create a shapefile containing median rental prices at the census tract level and
+   export it as a GEOJSON for integration into my web application.
+
+
+## Technologies used
+
+Which technologies covered in class (or discovered on your own!) do you
+plan to use? How do you anticipate using each of these technologies?
+
+Review the APIs/online examples of leaflet, turf, jQuery, underscore (or
+any library not explicitly covered in class) for functions/uses which
+you'd like to explore. Briefly describe how you might use them.
+
+1. jQuery: loading the data,
+  - ajax calls
+  - parsing the GEOJSON files
+  - appending or replacing text in the free floating window
+  - various click events, feeding functions into clicks
+2. leaflet
+  - L.map, setting the view when necessary
+  - Working with polylines (the subway stops)
+  - Working with a vector layer (a census tract)
+  - Adding and removing layers to the map
+  - Styling the vector and polyline files (colors, line weight etc.)
+  - Potentially adding circle markers at subway stops
+  - Filtering feature data
+3. underscore
+  -_.each when performing loops in functions
+  -_.map as necessary to adjust values in the data
+4. Bootstrap for layout and design help
+
+## Design spec
+
+#### User experience
+
+Users of this application will be those interested in exploring the relationship between real estate prices and
+transit connectivity in New York City. This could be real estate agents, property managers, those in the market to
+rent or purchase property or academics and planners looking to gain a more thorough understanding of the property
+market.
+
+This is an example that hits at the core theme of my application, although visually represents it in a slightly
+different format: http://projects.newyorker.com/story/subway/
+
+Functionality overview and user work flow:
+1. Bottom bar will allow you to select a subway line (visualized as circles as per MTA design)
+2. Clicking on subway line will cause it to appear on the map.
+3. Will highlight census tracts near the line.
+4. Click a stop on that line to make only the tracts around that stop appear.
+5. Popup window shows Median Rent for each of the highlighted census tracts.
+
+#### Layouts and visual design
+
+Static page elements:
+1. Top Banner with map title
+2. Map will occupy full width of screen.
+3. Bottom bar will contain selection options as subway lines.
+4. Free floating window will display results (try to have it dynamically size based on the amount
+   of information to display?)
+
+Interactivity and new visuals:
+1. As a line is selected it will display on the map with corresponding subway stops.
+2. As a stop is selected information about that census tract will appear in the free floating window.
+3. Associated census tracts may  be highlighted physically on the map as the user selects lines and stops.
+   I'm still considering how best to visually display the information.
+
+## Anticipated difficulties
+
+1. Coming up with a clean visualization of the data.
+2. Constructing the relationship between lines, stops and census tracts. I'm not sure if this is something
+   I need to build into the data on my own, or whether there are functions I can use to spatially evaluate the
+   relationship between these two GEOJson files.
+3. Landing on the most practical way to structure the various functions associated with each click of a subway line.
+
+
+## Missing pieces
+
+It would be useful to understand how to work with multiple datasets in a given project.
+So far I think we've covered how to work with one dataset, but say we want to visualize two datasets
+at a time or perform joins between the two, I'm unclear as to how that would work, or whether it would
+require different functionality than we're already covered. Or whether it's even possible at all.
